@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporizador de cuenta regresiva</title>
+    <style>
+        /* Estilos básicos para centrar el contenido y mejorar la visualización */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        /* Estilo para el temporizador, tamaño de fuente grande y color */
+        #timer {
+            font-size: 48px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Cuenta Regresiva</h1>
+<!-- Elemento donde se mostrará el tiempo restante -->
+<div id="timer">50</div>
+
+<script>
+    // Variable que contiene el tiempo inicial (50 segundos)
+    let timeLeft = 50;
+
+    // Obtenemos el elemento con id 'timer' para actualizar el valor en la página
+    const timerElement = document.getElementById('timer');
+
+    // Función que actualiza el temporizador en la página cada segundo
+    function updateTimer() {
+        timerElement.textContent = timeLeft; // Actualiza el contenido del elemento con el tiempo restante
+        timeLeft--; // Resta 1 segundo
+
+        // Si el tiempo llega a 0, detiene el temporizador y muestra el mensaje final
+        if (timeLeft < 0) {
+            clearInterval(countdown); // Detiene la ejecución del temporizador
+            timerElement.textContent = "¡Tiempo terminado!"; // Muestra el mensaje
+        }
+    }
+
+    // Usamos setTimeout para iniciar el temporizador después de 1 segundo
+    setTimeout(() => {
+        // setInterval ejecuta la función updateTimer cada 1000 ms (1 segundo)
+        const countdown = setInterval(updateTimer, 1000);
+    }, 1000); // El temporizador comienza 1 segundo después de cargar la página
+</script>
+
+</body>
+</html>
